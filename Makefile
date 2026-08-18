@@ -31,3 +31,6 @@ snapshot:
 
 gas:
 	forge test --gas-report
+
+deploy-local:
+	forge script script/DeployVaultStream.s.sol --rpc-url $(RPC) --private-key $(ANVIL_PRIVATE_KEY) --broadcast -vvvv
