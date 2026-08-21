@@ -12,20 +12,17 @@ contract UpgradeVaultStream is Script {
         vm.startBroadcast();
 
         VaultStreamV2 newImplementation = new VaultStreamV2();
+        address proxy = upgradeVaultStream(proxyAddress, address(newImplementation));
 
         vm.stopBroadcast();
 
-        return upgradeVaultStream(proxyAddress, address(newImplementation));
+        return proxy;
     }
 
     function upgradeVaultStream(address proxyAddress, address newImplementation) public returns (address) {
-        vm.startBroadcast();
-
         VaultStreamV1 proxy = VaultStreamV1(payable(proxyAddress));
 
         proxy.upgradeToAndCall(address(newImplementation), "");
-
-        vm.stopBroadcast();
 
         return address(proxy);
     }
