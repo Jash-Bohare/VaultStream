@@ -21,8 +21,7 @@ contract VaultStreamInvariant is Test {
         vm.startPrank(OWNER);
         VaultStreamV1 implV1 = new VaultStreamV1();
         ERC1967Proxy proxy = new ERC1967Proxy(
-            address(implV1),
-            abi.encodeCall(VaultStreamV1.initialize, (SUBSCRIPTION_PRICE, SUBSCRIPTION_DURATION))
+            address(implV1), abi.encodeCall(VaultStreamV1.initialize, (SUBSCRIPTION_PRICE, SUBSCRIPTION_DURATION))
         );
         VaultStreamV2 implV2 = new VaultStreamV2();
         VaultStreamV1(payable(address(proxy))).upgradeToAndCall(address(implV2), "");
