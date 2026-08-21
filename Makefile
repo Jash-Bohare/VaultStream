@@ -40,3 +40,6 @@ deploy-local-v2:
 
 deploy-test-v1:
 	forge script script/DeployVaultStream.s.sol --rpc-url $(SEPOLIA_RPC_URL) --private-key $(PRIVATE_KEY) --broadcast --verify --etherscan-api-key $(ETHERSCAN_API_KEY) -vvvv
+
+deploy-test-v2:
+	forge script script/UpgradeVaultStream.s.sol --rpc-url $(SEPOLIA_RPC_URL) --private-key $(PRIVATE_KEY) --broadcast --verify --etherscan-api-key $(ETHERSCAN_API_KEY) -vvvv
